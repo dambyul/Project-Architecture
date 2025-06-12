@@ -83,8 +83,9 @@ with Diagram(
                 # 2. 가공, 집계 된 데이터를 타 시스템과 연동
                 postgres >> Edge(color="red") >> proxy_dyno >> Edge(color="red") >> etl_tool
                 # 2-1. 대시보드로 활용하기 위해 데이터 마트 구축 후 MariaDB에 적재
+                # 2-2. 통합 회원 정보를 활용하기 위해 MariaDB에 적재
                 etl_tool >> Edge(color="red") >> azure_proxy >> Edge(color="red") >> maria >> Edge(color="red") >> dashboard
-                # 2-2. Data Cloud(CDP)에서 활용하기 위해 External Storage에 적재
+                # 2-3. Data Cloud(CDP)에서 활용하기 위해 External Storage에 적재
                 etl_tool >> Edge(color="red") >> s3_storage
 
         # CDP 구축을 위해 Data Cloud를 사용
